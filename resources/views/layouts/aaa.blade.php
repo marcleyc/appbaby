@@ -17,7 +17,7 @@
     <link href="https:///cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="logomarca.png" type="image">
+    <link rel="shortcut icon" href="{{asset('assets/img/logoBaby.png')}}" type="image">
    
     <!-- Custom styles for this template -->
     <link href="pricing.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 <nav class="navbar navbar-light bg-white shadow-sm p-2">
   <!-- div class="container" -->
     <a class="navbar-brand" href="#">
-      <img src="logomarca.png" alt="" width="40" height="40">
+      <img src="https://www.psicologaadrianalevindo.pt/assets/images/logo-163x163.png" alt="" width="40" height="40">
       <div>
       <a class="btn btn-outline-primary" href="/">Clientes</a>
       <a class="btn btn-outline-primary" href="/cliente-cadastro">Cadastro</a>
@@ -50,7 +50,7 @@
 <footer class="pt-4 my-md-5 pt-md-5 border-top p-2">
     <div class="row">
         <div class="col-12 col-md">
-            <img class="mb-2" src="logomarca.png" alt="" width="24" height="24">
+            <img class="mb-2" src="{{asset('assets/img/logo_mtech_t.png')}}" alt="" width="24" height="24">
             <small class="d-block mb-3 text-muted">&copy; MyTech 2022</small>
         </div>          
     </div>

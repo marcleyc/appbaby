@@ -93,10 +93,10 @@
         
         <div class="col-6" style="align-items: center;">
           <label class="form-label"></label>
-          <div class="text-end">
-            <span> <a class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModalE">Editar</a></span>                         
-            <span> <a class="btn btn-sm btn-outline-danger" href="/historico-deletar-api/{{$historico->id}}/{{$historico->idc}}">Apagar</a></span>
-            <span> <a class="btn btn-sm btn-outline-primary" href="/historico-editar/{{$historico->id}}">EditOld</a></span>            
+          <div class="text-end">                                 
+            <span> <a class="btn btn-sm btn-outline-success" href="/historicoshow/{{$historico->id}}">Mostar</a></span>
+            <span> <a class="btn btn-sm btn-outline-primary" href="/historico-editar/{{$historico->id}}">Editar</a></span>
+            <span> <a class="btn btn-sm btn-outline-danger" href="/historico-deletar-api/{{$historico->id}}/{{$historico->idc}}">Apagar</a></span>            
           </div>  
         </div>
       
@@ -110,7 +110,7 @@
   
 </form>
 
-<!-------------------------------------------------------------- M O D A L  Historico Incluir -->
+  <!-------------------------------------------------------------- M O D A L  Historico Incluir -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -137,7 +137,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>
@@ -170,8 +170,8 @@
             </div>
             
             <div>
-              <label for="inputEmail4" class="form-label">Histórico</label>
-              <input type="text" class="form-control" name="descricao" value="{{$historico->descricao}}">
+              <label class="form-label">Histórico</label>
+              <textarea style="height: 100px" type="textarea" class="form-control" name="historico">{{$historico->descricao}}</textarea> 
             </div>    
       </div>
 

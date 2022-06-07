@@ -3,12 +3,11 @@
 
 <!---------------------------------------------------------- C O N T E U D O -->
 @section('content')
-
   <div class="p-2"></div>
   <div class ="container" id="recibo">
-  <h1 style="text-align: center;">Cadastre o histórico do cliente </h1>
+  <h1 style="text-align: center;">Histórico</h1>
 <form class="row g-3" action="/historico-editar-api/{{$historico->id}}" method="POST">
-@csrf
+
     <!-- 2 COLUNAS ------------------------------------------------------------------------- -->
       <div class="col-md-12">        
         <input type="hidden" class="form-control" name="idc" value="{{$historico->idc}}">
@@ -20,18 +19,19 @@
       </div>
 
       <div class="col-md-12">
-        <label for="inputPassword4" class="form-label">Histórico</label>        
-        <textarea style="height: 100px" type="textarea" class="form-control" name="descricao" value="{{$historico->descricao}}">{{$historico->descricao}}</textarea>
+        <label class="form-label">Histórico</label>
+        <textarea style="height: 100px" type="textarea" class="form-control" name="historico">{{$historico->descricao}}</textarea>
       </div>
 
     
     <!-- ENVIAR ------------------------------------------------------------------------- -->
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Salvar</button>
+      <div class="col-12">              
+        <a class="btn btn-success" href="/historicos/{{$historico->idc}}">Fechar</a>        
       </div>
 
     </div>
 
 </form>
+
 
 @endsection  

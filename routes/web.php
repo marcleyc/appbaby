@@ -92,7 +92,7 @@ Route::get('/cliente-deletar-api/{id}', function ($id) {
     return redirect()->route('clientes');    
 });
 
-// --------------------------------------------------------------------- HISTÓRICOS ----
+// --------------------------------------------------------------------- HISTÓRICOS SUB CLIENTES----
 Route::get('/historicos/{id}', function (Request $request, $id) {
     $cliente = Cliente::find($id);
     $historico = Historico::where('idc','=', "{$id}")->orderBy('datah', 'desc')->get();
@@ -101,6 +101,12 @@ Route::get('/historicos/{id}', function (Request $request, $id) {
     //data = $request->session()->all();
     return view('historicos', ['cliente'=>$cliente, 'historicos'=>$historico]);
 })->name('historicos');
+
+// --------------------------------------------------------------------- HISTÓRICO MOSTRAR ----
+Route::get('/historicoshow/{id}', function ($id) {
+    $historico = Historico::find($id);
+    return view('historicoshow',['historico'=>$historico]);
+    })->name('historicosshow');;
 
 // --------------------------------------------------------------------- HISTÓRICO EDITAR ----
 Route::get('/historico-editar/{id}', function ($id) {
