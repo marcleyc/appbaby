@@ -32,9 +32,9 @@
     <a class="navbar-brand" href="#">
       <img src="https://www.psicologaadrianalevindo.pt/assets/images/logo-163x163.png" alt="" width="40" height="40">
       <div>
-      <a class="btn btn-outline-primary" href="/">Clientes</a>
-      <a class="btn btn-outline-primary" href="/cliente-cadastro">Cadastro</a>
-      <a class="btn btn-outline-primary" href="/clientes">Histórico</a>
+      <a class="btn btn-outline-primary" href="{{route('clientes')}}">Clientes</a>
+      <a class="btn btn-outline-primary" href="{{route('clientescad')}}">Cadastro</a>
+      <a class="btn btn-outline-primary" href="/">Relatórios</a>
       </div>
     </a>
   <!-- /div -->

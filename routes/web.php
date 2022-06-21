@@ -36,7 +36,7 @@ Route::get('/clientess', function () {
 // --------------------------------------------------------------------- CLIENTE CRIAR ----
 Route::get('/cliente-cadastro', function () {
     return view('clienteform');
-});
+})->name('clientescad');
 
 Route::post('/cliente-cadastro-api', function(Request $request) {
     //dd($request->all());
@@ -53,7 +53,7 @@ Route::post('/cliente-cadastro-api', function(Request $request) {
         'nif'=>$request->nif,
         'familiar'=>$request->familiar,
         'queixa'=>$request->queixa
-    ]);
+    ])->name('clientecriar');
     return redirect('/');
     //echo "Produto cadastrado com sucesso!";
 });
@@ -62,7 +62,7 @@ Route::post('/cliente-cadastro-api', function(Request $request) {
 Route::get('/cliente-editar/{id}', function ($id) {
     $cliente = Cliente::find($id);
     return view('clienteformed',['cliente'=>$cliente]);    
-});
+})->name('clienteeditar');
 
 Route::post('/cliente-editar-api/{id}', function (Request $request, $id) {
     //dd($request->all());
@@ -152,3 +152,13 @@ Route::get('/historico-deletar-api/{id}/{idc}', function ($id, $idc) {
 //Product::findOrFail(1) : it is similar to the previous one, but it will throw an exception if no result is found.
 //Product::create(['name' => 'TV', ...]) : create a new record in the database. You must pass an associative
 //Product::destroy(1) : remove the product with id 1
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

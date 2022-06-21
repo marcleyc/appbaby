@@ -35,8 +35,8 @@
                 <td>{{$cliente->data->format('d/m/Y')}}</td>
                 <td>{{$cliente->nome}}</td>
                 <td>
-                  <a class="btn btn-sm btn-outline-success" href="/historicos/{{$cliente->id}}">His</a>
-                  <a class="btn btn-sm btn-outline-primary" href="/cliente-editar/{{$cliente->id}}">Edt</a>
+                  <a class="btn btn-sm btn-outline-success" href="{{route('historicos', ['id'=> $cliente->id])}}">His</a>
+                  <a class="btn btn-sm btn-outline-primary" href="{{route('clienteeditar', ['id'=> $cliente->id])}}">Edt</a>
                   <a class="btn btn-sm btn-outline-danger" href="/cliente-deletar-api/{{$cliente->id}}">Del</a>
                 </td>  
             </tr> 
