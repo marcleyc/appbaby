@@ -1,5 +1,0 @@
-user: psicol47_dri
-database: psicol47_babydb
-password: Adriana47##
-host: 185.12.116.75
-port: 3306
