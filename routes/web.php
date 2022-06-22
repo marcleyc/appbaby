@@ -12,6 +12,12 @@ Route::get('/clientes', function () {
     return view('clientes', ['clientes'=>$cliente]);
 });
 
+Route::get('/apiclientes', function () {
+    $cliente = Cliente::get();
+    return $cliente;
+}); // retorna um json
+
+
 // --------------------------------------------------------------------- CLIENTE MOSTAR ----
 Route::get('/', function () {
     $cliente = Cliente::get();
@@ -28,15 +34,10 @@ Route::get('/cliente/{id}', function ($id) {
     return view('cliente', ['cliente'=>$cliente, 'idade'=>$idade->y]);
 })->name('cliente');
 
-Route::get('/clientess', function () {
-    $cliente = Cliente::get();
-    return $cliente;
-}); // retorna um json
-
 // --------------------------------------------------------------------- CLIENTE CRIAR ----
 Route::get('/cliente-cadastro', function () {
     return view('clienteform');
-})->name('clientescad');
+})->name('clientecriar');
 
 Route::post('/cliente-cadastro-api', function(Request $request) {
     //dd($request->all());
@@ -53,14 +54,14 @@ Route::post('/cliente-cadastro-api', function(Request $request) {
         'nif'=>$request->nif,
         'familiar'=>$request->familiar,
         'queixa'=>$request->queixa
-    ])->name('clientecriar');
+    ]);
     return redirect('/');
     //echo "Produto cadastrado com sucesso!";
-});
+})->name('clientecriar-api');
 
 // --------------------------------------------------------------------- CLIENTE EDITAR ----
 Route::get('/cliente-editar/{id}', function ($id) {
-    $cliente = Cliente::find($id);
+    $cliente = Cliente::find($id);    
     return view('clienteformed',['cliente'=>$cliente]);    
 })->name('clienteeditar');
 
@@ -83,14 +84,14 @@ Route::post('/cliente-editar-api/{id}', function (Request $request, $id) {
     ]);
     //echo "Cliente editado!";
     return redirect('/');
-});
+})->name('clienteeditar-api');
 
 // --------------------------------------------------------------------- CLIENTE DELETAR ----
 Route::get('/cliente-deletar-api/{id}', function ($id) {
     $cliente = Cliente::find($id);
     $cliente->delete();
     return redirect()->route('clientes');    
-});
+})->name('clientedeletar');
 
 // --------------------------------------------------------------------- HISTÓRICOS SUB CLIENTES----
 Route::get('/historicos/{id}', function (Request $request, $id) {
@@ -106,25 +107,7 @@ Route::get('/historicos/{id}', function (Request $request, $id) {
 Route::get('/historicoshow/{id}', function ($id) {
     $historico = Historico::find($id);
     return view('historicoshow',['historico'=>$historico]);
-    })->name('historicosshow');;
-
-// --------------------------------------------------------------------- HISTÓRICO EDITAR ----
-Route::get('/historico-editar/{id}', function ($id) {
-    $historico = Historico::find($id);
-    return view('historicoformed',['historico'=>$historico]);
-    //return view('historicomodal',['historico'=>$historico]);    
-});
-
-Route::post('/historico-editar-api/{id}', function (Request $request, $id) {
-    //dd($request->all());
-    $historico = Historico::find($id);
-    $historico->update([
-        'idc'=>$request->idc,
-        'datah'=>$request->datah,
-        'descricao'=>$request->descricao, 
-    ]);
-    return redirect()->route('historicos', ['id' => $request->idc]);
-});
+    })->name('historicosshow');
 
 // --------------------------------------------------------------------- HISTÓRICOS CRIAR----
 Route::post('/historico-cadastro-api', function(Request $request) {    
@@ -136,14 +119,32 @@ Route::post('/historico-cadastro-api', function(Request $request) {
     ]);
     $idd = $request->id;
     return redirect()->route('historicos', ['id' => $idd]);
-});
+})->name('historicocriar-api');
+
+// --------------------------------------------------------------------- HISTÓRICO EDITAR ----
+Route::get('/historico-editar/{id}', function ($id) {
+    $historico = Historico::find($id);
+    return view('historicoformed',['historico'=>$historico]);
+    //return view('historicomodal',['historico'=>$historico]);    
+})->name('historicoeditar');
+
+Route::post('/historico-editar-api/{id}', function (Request $request, $id) {
+    //dd($request->all());
+    $historico = Historico::find($id);
+    $historico->update([
+        'idc'=>$request->idc,
+        'datah'=>$request->datah,
+        'descricao'=>$request->descricao, 
+    ]);
+    return redirect()->route('historicos', ['id' => $request->idc]);
+})->name('historicoeditar-api');
 
 // --------------------------------------------------------------------- HISTÓRICOS DELETAR ----
 Route::get('/historico-deletar-api/{id}/{idc}', function ($id, $idc) {
     $historico = Historico::find($id);
     $historico->delete();
     return redirect()->route('historicos', ['id' => $idc]);    
-});
+})->name('historicodeletar');
 
 
 //https://www.youtube.com/watch?v=_EFEwCQRXBY

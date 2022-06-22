@@ -82,6 +82,7 @@
   </div>
 </div>
 
+
   <!-- -------------------------------------------------------------------HISTÓRICOS------------ -->  
     <div class="container" style="border-radius: 25px; padding: 5px;">
       @foreach ($historicos as $historico)     
@@ -94,9 +95,9 @@
         <div class="col-6" style="align-items: center;">
           <label class="form-label"></label>
           <div class="text-end">                                 
-            <span> <a class="btn btn-sm btn-outline-success" href="/historicoshow/{{$historico->id}}">Mostar</a></span>
-            <span> <a class="btn btn-sm btn-outline-primary" href="/historico-editar/{{$historico->id}}">Editar</a></span>
-            <span> <a class="btn btn-sm btn-outline-danger" href="/historico-deletar-api/{{$historico->id}}/{{$historico->idc}}">Apagar</a></span>            
+            <span> <a class="btn btn-sm btn-outline-success" href="{{route('historicosshow', ['id'=> $historico->id])}}">Mostar</a></span> 
+            <span> <a class="btn btn-sm btn-outline-primary" href="{{route('historicoeditar', ['id'=> $historico->id])}}">Editar</a></span>            
+            <span> <a class="btn btn-sm btn-outline-danger" href="{{route('historicodeletar', ['id'=> $historico->id, $historico->idc])}}">Apagar</a></span>            
           </div>  
         </div>
       
@@ -109,8 +110,9 @@
     </div>
   
 </form>
+ 
 
-  <!-------------------------------------------------------------- M O D A L  Historico Incluir -->
+<!-------------------------------------------------------------- M O D A L  Historico Incluir -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -119,7 +121,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-3" action="/historico-cadastro-api/" method="POST">
+        <form class="row g-3" action="{{route('historicocriar-api')}}" method="POST">
           @csrf
             <div>
               <input type="hidden" class="form-control" name="id" value="{{$cliente->id}}">
@@ -141,48 +143,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>  
 
-<!-------------------------------------------------------------- M O D A L  Historico Editar -->
-@foreach ($historicos as $historico)
-<div class="modal fade" id="exampleModalE" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabelE">Editar</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-       
-      <div class="modal-body">
-        <form class="row g-3" action="/historico-editar-api/{{$historico->id}}" method="POST">
-          @csrf
-            <div>
-              <input type="text" class="form-control" name="id" value="{{$historico->id}}">
-            </div>
-            
-            <div>
-              <input type="text" class="form-control" name="idc" value="{{$historico->idc}}">
-            </div>
 
-            <div>
-              <label class="form-label">Data</label>
-              <input type="date" class="form-control" name="datah" value="{{$historico->datah->format('Y-m-d')}}">
-            </div>
-            
-            <div>
-              <label class="form-label">Histórico</label>
-              <textarea style="height: 100px" type="textarea" class="form-control" name="historico">{{$historico->descricao}}</textarea> 
-            </div>    
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-@endforeach
-
-@endsection   
-
+@endsection  

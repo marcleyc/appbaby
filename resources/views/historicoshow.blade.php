@@ -26,7 +26,7 @@
     
     <!-- ENVIAR ------------------------------------------------------------------------- -->
       <div class="col-12">              
-        <a class="btn btn-success" href="/historicos/{{$historico->idc}}">Fechar</a>        
+        <a class="btn btn-success" href=" {{route('historicos', ['id'=> $historico->idc])}}">Fechar</a>       
       </div>
 
     </div>

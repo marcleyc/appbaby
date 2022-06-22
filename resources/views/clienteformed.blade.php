@@ -7,7 +7,7 @@
 <div class="p-2"></div>
 <div class ="container" id="recibo">
 <h1 style="text-align: center;">Cadastro do cliente</h1>
-<form class="row g-3" action="/cliente-editar-api/{{$cliente->id}}" method="POST">
+<form class="row g-3" action="{{route('clienteeditar-api', ['id'=> $cliente->id])}}" method="POST"> 
   @csrf
   <!-- 2 COLUNAS ------------------------------------------------------------------------- -->  
     <div class="col-md-9">

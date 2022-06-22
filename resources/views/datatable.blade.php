@@ -7,7 +7,7 @@
 @endsection
   
 @section('content')
-  <div style="padding:10px"> <a class="btn btn-sm btn-outline-primary" href="/cliente-cadastro">Cadastrar</a> </div>
+  <div style="padding:10px"> <a class="btn btn-sm btn-outline-primary" href="{{route('clientecriar')}}">Cadastrar</a> </div>
 
   <div class="container">    
     <table id="example" class="display" style="width:80%">
@@ -37,7 +37,7 @@
                 <td>
                   <a class="btn btn-sm btn-outline-success" href="{{route('historicos', ['id'=> $cliente->id])}}">His</a>
                   <a class="btn btn-sm btn-outline-primary" href="{{route('clienteeditar', ['id'=> $cliente->id])}}">Edt</a>
-                  <a class="btn btn-sm btn-outline-danger" href="/cliente-deletar-api/{{$cliente->id}}">Del</a>
+                  <a class="btn btn-sm btn-outline-danger" href="{{route('clientedeletar', ['id'=> $cliente->id])}}">Del</a>
                 </td>  
             </tr> 
             @endforeach 
