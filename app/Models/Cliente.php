@@ -37,8 +37,8 @@ class Cliente extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'qtdsessoes' => 'int',
-		'familiar' => 'int'
+		'qtdsessoes' => 'int'
+		
 	];
 
 	protected $dates = [
