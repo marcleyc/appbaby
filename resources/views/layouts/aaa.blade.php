@@ -34,7 +34,7 @@
       <div>
       <a class="btn btn-outline-primary" href="{{route('clientes')}}">Clientes</a>
       <a class="btn btn-outline-primary" href="{{route('clientecriar')}}">Cadastro</a>
-      <a class="btn btn-outline-primary" href="/">Relatórios</a>
+      <a class="btn btn-outline-primary" href="{{route('clientes')}}">Relatórios</a>
       </div>
     </a>
   <!-- /div -->
