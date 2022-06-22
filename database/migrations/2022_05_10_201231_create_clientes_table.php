@@ -25,8 +25,8 @@ class CreateClientesTable extends Migration
             $table->string('telefone', 20);
             $table->string('email', 200);
             $table->string('nif', 9);
-            $table->integer('familiar');
-            $table->string('queixa');
+            $table->string('familiar' 200);
+            $table->string('queixa' 200);
         });
     }
 
