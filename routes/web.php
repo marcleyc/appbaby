@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Historico;
 
-// --------------------------------------------------------------------- T E S T ----
-Route::get('/clientes', function () {
-    $cliente = Cliente::get();
-    return view('clientes', ['clientes'=>$cliente]);
+Route::get('/', function () {
+    return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+// --------------------------------------------------------------------- T E S T ----
 Route::get('/apiclientes', function () {
     $cliente = Cliente::get();
     return $cliente;
@@ -19,10 +24,10 @@ Route::get('/apiclientes', function () {
 
 
 // --------------------------------------------------------------------- CLIENTE MOSTAR ----
-Route::get('/', function () {
+Route::get('/clientes', function () {
     $cliente = Cliente::get();
     return view('datatable', ['clientes'=>$cliente]);
-})->name('clientes');
+})->middleware(['auth'])->name('clientes');
 
 Route::get('/cliente/{id}', function ($id) {
     $cliente = Cliente::find($id);
@@ -153,13 +158,3 @@ Route::get('/historico-deletar-api/{id}/{idc}', function ($id, $idc) {
 //Product::findOrFail(1) : it is similar to the previous one, but it will throw an exception if no result is found.
 //Product::create(['name' => 'TV', ...]) : create a new record in the database. You must pass an associative
 //Product::destroy(1) : remove the product with id 1
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
